@@ -5,10 +5,8 @@
 		''  // client_secret
 	);
 
-	$qte = intval($_POST['Qte']);
-
 	$orderId = time(); // Set the Order ID to identify the sale 
-	$price = $qte*1000; // Set the price for the sale 
+	$price = 1000; // Set the price for the sale in HTG ( Haitian gourdes )
 
 	// var_dump($price);
 
@@ -19,7 +17,7 @@
 
 	echo '<div class="FW MX600 DIB VC P10 TC FH PT100 lshad95">';
 	echo '<div class="TL">';
-	echo '<a href="./">Retour</a><br><br>';
+	echo '<a href="./">Refresh</a><br><br>';
 	echo '</div>';
 
 	if (!$isPayed) {
@@ -44,7 +42,8 @@
 		// var_dump($payment_token);
 
 		if ($payment_token == "") {
-			echo '<i>Désolé connexion impossible. { '.$btndata['message'].' }</i>';
+			$message = (isset($btndata['message'])) ? $btndata['message'] : '' ;
+			echo '<i>Désolé connexion impossible. { '.$message.' }</i>';
 		}else{
 			echo 'Votre commande a été enregistré avec succès<br>';
 			echo 'Achat de '.$qte.' ticket<br>';
